@@ -26,7 +26,7 @@
     
   </header>
     <h1>Firewall Config Generator</h1>
-    <label for="siteInput">Site:</label>
+    <label for="siteInput">Site (Digite o IP do site desejado):</label>
     <input type="text" id="siteInput" placeholder="Insira o site desejado">
     
     <label for="actionSelect">Ação:</label>
@@ -38,9 +38,9 @@
     <button onclick="generateConfig()">Gerar Script</button>
 
     <div id="configOutput"></div>
-
-    <a id="downloadLink" style="display: none" download="firewall_script.sh">Baixar Script</a>
-
+    <div class="download__botao">
+      <a id="downloadLink" style="display: none" download="firewall_script.sh">Baixar Script</a>
+    </div>
     <div>
 
       <h2>Depois do download siga as seguintes instruções:</h2>
