@@ -1,105 +1,92 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Configuração Apache</title>
-    <style>
-        body {
-          font-family: Arial, sans-serif;
-          text-align: center;
-          margin: 50px;
-        }
-        label {
-          display: block;
-          margin-bottom: 10px;
-        }
-        input {
-          width: 100%;
-          padding: 8px;
-          margin-bottom: 15px;
-        }
-        button {
-          padding: 10px 20px;
-          font-size: 16px;
-          cursor: pointer;
-        }
-      </style>
+    <title>Alura Plus</title>
+    <link rel="stylesheet" href="style/style.css">
 </head>
 <body>
+    <header>
 
-    <h1>Configuração Apache</h1>
+        <div class="cabecalho">
 
-    <form id="configForm">
-        <label for="port">Porta:</label>
-        <input type="text" id="port" name="port" required><br>
+            <section class="cabecalho__menu">
 
-        <label for="folder">Nome da Pasta:</label>
-        <input type="text" id="folder" name="folder" required><br>
+                <a class="cabecalho__menu__link" href="index.html">Home</a>
+                <a class="cabecalho__menu__link" href="apache2.html">Apache2</a>
+                <a class="cabecalho__menu__link" href="firewall.html">Firewall</a>
+                <a class="cabecalho__menu__link" href="about.html">Sobre</a>
 
-        <button type="button" onclick="generateScript()">Gerar Script e Baixar</button>
-    </form>
+            </section>
 
-    <div>
+        </div>
+        
+    </header>
+    <section class="principal container">
+        <div class="container__caixa">
+            <h1 class="container__titulo">Assine por um preço único.</h1>
+            <img src="img/logomarcar.png" alt="Banner" class="container__imagem">
+            <a href="#" class="container__botao">Assine por 12x de R$ 120,00*</a>
+            <a href="#" class="container__botao botao_secundario">Assinar mensalmente</a>
+            <p class="container__aviso">*O preço pode variar caso a assinatura seja feita em outros planos.</p>
+        </div>
+    </section>
 
-        <h2>Depois do download siga as seguintes instruções:</h2>
-        <p>Com o botão direito do mouse no pasta arquivo baixado, selecione Abra o Emulador de Terminal aqui</p>
-        <img src="selecaoScript.png" alt="">
-        <p>No Terminal digite o seguinte comando: sudo chmod u+x script.sh</p>
-        <img src="comandoPermissão.png" alt="">
-        <p>Em seguida no terminal digite o comando ./script.sh</p>
-        <img src="execucao.png" alt="">
-        <h2>Pronto! A configuração está completa.</h2>
-        <img src="finalizado.png" alt="">
+    <section class="container secundario">
+        <img src="img/apache2.jpg" alt="Apache2" class="container__secundario__imagem">
+        <div class="container__secundario__caixa">
+            <h2 class="container__secundario__titulo">Apache2</h2>
+            <p class="container__secundario__texto">Apresentamos um projeto inovador com o propósito de simplificar a configuração do serviço Apache2 no sistema Linux. Nossa ferramenta web permite aos usuários personalizar as configurações, definindo o nome do arquivo HTML e a porta desejada, e facilita o processo ao disponibilizar o download de um script personalizado para aplicar as alterações no servidor.</p>
+        </div>
+    </section>
 
-    </div>
+    <section class="container secundario">
+        <img src="img/firewall.png" alt="Firewall" class="container__secundario__imagem">
+        <div class="container__secundario__caixa">
+            <h2 class="container__secundario__titulo">Firewall </h2>
+            <p class="container__secundario__texto">Apresentamos um projeto inovador com o propósito de simplificar a configuração do serviço Firewall no sistema Linux. Nossa ferramenta web permite aos usuários personalizar as configurações, definindo o IP que será bloqueado ou liberado, e facilita o processo ao disponibilizar o download de um script personalizado para aplicar as alterações desejadas.</p>
+        </div>
+    </section>
 
+    <section class="container__dispositivos">
+        <h2 class="container__dispositivos__titulo">Dispositivo disponível</h2>
+        <ul class="container__dispositivos__lista">
+            <li>
+                <img src="img/computador.png" alt="Ícone de computador">
+                <h3 class="container__dispositivos__lista__titulo">Computadores</h3>
+            </li>
+        </ul>
+    </section>
 
-
-    <script>
-        function generateScript() {
-            var port = document.getElementById('port').value;
-            var folder = document.getElementById('folder').value;
-
-            var script = `#!/bin/bash
-sudo chmod ugo+rwx /etc/apache2/ports.conf
-arquivo=/etc/apache2/ports.conf
-head -n 2 $arquivo > temp_file
-echo listen ${port} >> temp_file
-tail -n +3 $arquivo >> temp_file
-sudo chmod ugo+rwx temp_file
-sudo mv temp_file $arquivo
-sudo chmod ugo+rwx /etc/apache2/sites-enabled/000-default.conf
-arquivo2=/etc/apache2/sites-enabled/000-default.conf
-cat <<EOL >> $arquivo2
-<VirtualHost *:${port}>
-	ServerAdmin webmaster@localhost
-  	DocumentRoot /var/www/${folder}
-</VirtualHost>
-EOL
-pasta=/var/www/${folder}
-if [ ! -d $pasta ]; then
-	sudo mkdir -p $pasta
-fi
-arquivo3=/var/www/${folder}/index.html
-sudo chmod ugo+rwx /var/www/${folder}
-sudo cat <<EOL >> $arquivo3
-<h1>Porta:${port}</h1>
-<h2>Configuracao do projeto ${folder} realizada com sucesso!</h2>
-EOL
-sudo service apache2 restart`;
-
-            var blob = new Blob([script], { type: 'text/plain' });
-            var a = document.createElement('a');
-            a.href = window.URL.createObjectURL(blob);
-            a.download = 'script.sh';
-            a.style.display = 'none';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-        }
-    </script>
+    <footer class="rodape">
+        <img src="img/logo.png" alt="Quick2Config" class="rodape__logo">
+        <ul class="rodape__lista">
+            <li class="rodape__lista__link">
+                <a href="#">Idioma</a>
+            </li>
+            <li class="rodape__lista__link">
+                <a href="#">Dispositivos compatíveis</a>
+            </li>
+            <li class="rodape__lista__link">
+                <a href="#">Contrato de assinatura</a>
+            </li>
+            <li class="rodape__lista__link">
+                <a href="#">Politica de privacidade</a>
+            </li>
+            <li class="rodape__lista__link">
+                <a href="#">Proteção de dados no Brasil</a>
+            </li>
+            <li class="rodape__lista__link">
+                <a href="#">Anuncios personalizados</a>
+            </li>
+            <li class="rodape__lista__link">
+                <a href="#">Ajuda</a>
+            </li>
+        </ul>
+        <p class="rodape__texto">® 2023 Quick2Config. Todos os direitos reservados. Serviço de assinatura paga. Conteúdo sujeito a disponibilidade.</p>
+    </footer>
 
 </body>
 </html>
