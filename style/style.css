@@ -28,6 +28,7 @@ body {
 
 header {
     height: 5rem;
+    margin: 1rem;
 }
 
 .cabecalho__menu{
@@ -113,6 +114,12 @@ header {
 
 .container__secundario__imagem {
     width: 80%;
+}
+
+.container__secundario__imagem2 {
+    width: 80%;
+    margin: 0 5rem;
+    border-radius: 0.5rem;
 }
 
 .container__secundario__titulo {
