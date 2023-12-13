@@ -114,6 +114,7 @@ header {
 
 .container__secundario__imagem {
     width: 80%;
+    border-radius: 0.5rem;
 }
 
 .container__secundario__imagem2 {
