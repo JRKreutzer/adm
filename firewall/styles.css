@@ -16,6 +16,14 @@ label {
   margin-bottom: 8px;
 }
 
+h2 {
+  margin: 1rem;
+}
+
+p {
+  margin: 1rem;
+}
+
 input,
 select {
   width: 100%;
